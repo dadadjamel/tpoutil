@@ -22,7 +22,31 @@ public class BusController {
 	BusService busService;
 	
 
+<<<<<<< HEAD
 	
+=======
+	@RequestMapping("/createtrip")
+	public String reserveBus(Model model, Principal principal) {
+
+		model.addAttribute("bus", new Bus());
+
+		return "createtrip";
+	}
+
+	@RequestMapping(value = "/createreserve", method = RequestMethod.POST)
+	public String createReserve(@Validated(FormValidationGroup.class) Bus bus, BindingResult result,
+			Principal principal) {
+
+		if (result.hasErrors()) {
+			return "reservebus";
+		}
+
+		busService.create(bus);
+
+		return "home";
+
+	}
+>>>>>>> fonc3
 
 	@RequestMapping("/results")
 	public String leave(Model model, Principal principal) {
